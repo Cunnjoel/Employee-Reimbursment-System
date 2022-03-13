@@ -1,4 +1,4 @@
-package com.revature.services;
+/*package com.revature.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -45,4 +45,4 @@ public class UserServiceTest {
 
         verify(userDAO).getByUsername(GENERIC_EMPLOYEE_1.getUsername());
     }
-}
+}*/
