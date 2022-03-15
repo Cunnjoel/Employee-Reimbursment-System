@@ -11,6 +11,9 @@ public class Reimbursement {
     private Date resolved;
     private String description;
     private Blob receipt;
+    private Integer userId;
+    private Integer statusId;
+    private Integer typeId;
 
     public Reimbursement() {
     }
@@ -22,6 +25,50 @@ public class Reimbursement {
         this.resolved = resolved;
         this.description = description;
         this.receipt = receipt;
+
+    }
+
+    public Reimbursement(Double amount, Integer userId, Integer statusId, Integer typeId) {
+        this.amount = amount;
+        this.userId = userId;
+        this.statusId = statusId;
+        this.typeId = typeId;
+    }
+
+    public Reimbursement(Integer id, Double amount, Date submitted, Date resolved, String description, Blob receipt, Integer userId, Integer statusId, Integer typeId) {
+        this.id = id;
+        this.amount = amount;
+        this.submitted = submitted;
+        this.resolved = resolved;
+        this.description = description;
+        this.receipt = receipt;
+        this.userId = userId;
+        this.statusId = statusId;
+        this.typeId = typeId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Integer getId() {

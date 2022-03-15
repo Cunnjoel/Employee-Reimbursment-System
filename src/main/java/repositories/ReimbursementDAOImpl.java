@@ -35,12 +35,23 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
     }
 
     @Override
-    public Reimbursement getByStatus(Integer statusId) {
-        return null;
-    }
-
-    @Override
     public void createReimbursement(Reimbursement reimbursement) {
 
+        try{
+            Connection conn = ConnectionUtil.getConnection();
+            String sql = "insert into ers_reimbursement (reimb_amount, ers_users_fk_auth, ers_reimbursement_status_fk, ers_reimbursement_type_fk)\n" +
+                    "values (?, ?, ?, ?);";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDouble(1, reimbursement.getAmount());
+            ps.setInt(2, reimbursement.getUserId());
+            ps.setInt(3, reimbursement.getStatusId());
+            ps.setInt(4, reimbursement.getTypeId());
+
+            ps.executeUpdate();
+
+        }catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
     }
 }
