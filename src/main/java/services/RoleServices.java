@@ -11,7 +11,7 @@ public class RoleServices {
 
     public RoleServices() { this.roleDAO = new RoleDAOImlp(); }
 
-    public Role getAllRoleGivenId(Integer roleId){
-        return this.roleDAO.getRoleById(roleId);
-    }
+    public Role getAllRoleGivenId(Integer roleId){ return this.roleDAO.getRoleById(roleId); }
+
+    public void changeRoleGivenId(Integer roleId) { this.roleDAO.changeRole(roleId); }
 }
