@@ -13,8 +13,8 @@ public class ReimbursementServices {
 
     public ReimbursementServices() { this.reimbursementDAO = new ReimbursementDAOImpl(); }
 
-    public List<Reimbursement> getAllGivenId(Integer reimbursementID){
-        return this.reimbursementDAO.getAllReimbursementById(reimbursementID);
+    public List<Reimbursement> getAllGivenId(Integer userId){
+        return this.reimbursementDAO.getAllReimbursementById(userId);
     }
 
     public void createReimbursement(Reimbursement reimbursement) { this.reimbursementDAO.createReimbursement(reimbursement); }

@@ -1,20 +1,40 @@
+import controllers.*;
+import io.javalin.Javalin;
 import models.Reimbursement;
 import repositories.*;
+import services.ReimbursementServices;
+import services.StatusServices;
+import services.TypeServices;
+import services.UserServices;
 
 public class MainDrive {
     public static void main(String[] args) {
-        UserDAO user = new UserDaoImpl();
-        ReimbursementDAO reimbursementDAO = new ReimbursementDAOImpl();
-        ReimbursementDAOImpl reimb = new ReimbursementDAOImpl();
-        RoleDAO role = new RoleDAOImlp();
-        StatusDAO status = new StatusDAOImlp();
-        TypeDAO type = new TypeDAOImpl();
+        Javalin app = Javalin.create(javalinConfig -> {
+            javalinConfig.enableCorsForOrigin("");
+        }).start(9000);
 
-        //System.out.println(user.getUserGivenUserName("MeUser"));
-        //System.out.println(reimbursementDAO.getAllReimbursementById(2));
-        //System.out.println(reimb.createReimbursement(new Reimbursement(200.50, 2,1,1)));
-        //System.out.println(role.getRoleById(1));
-        //System.out.println(status.getStatusById(1));
-        System.out.println(type.getTypebById(1));
+        UserController userController = new UserController();
+        ReimbursementController reimbursementController = new ReimbursementController();
+        TypeController typeController = new TypeController();
+        StatusController statusController = new StatusController();
+        RoleController roleController = new RoleController();
+
+
+        // user endpoints
+        app.post("/login", userController::login);
+
+        //reimbursement endpoints
+        app.get("/reimbursement", reimbursementController::displayReimbursementForUser);
+        app.post("/reimbursement", reimbursementController::createReimbursement);
+
+        //type endpoints
+        app.get("/type", typeController::getTypeById);
+
+        //status endpoints
+        app.get("/status", statusController::getStatusById);
+        app.patch("/status/{statusId}", statusController::changeStatusById);
+
+        //role endpoints
+        app.get("/role", roleController::getRoleById);
     }
 }

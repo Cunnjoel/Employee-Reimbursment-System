@@ -11,7 +11,7 @@ import java.util.List;
 public class ReimbursementDAOImpl implements ReimbursementDAO{
 
     @Override
-    public List<Reimbursement> getAllReimbursementById(Integer reimbursementID) {
+    public List<Reimbursement> getAllReimbursementById(Integer userId) {
         List<Reimbursement> reimbursement =new ArrayList<>();
 
         try {
@@ -19,7 +19,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
             String sql = "select * from ers_reimbursement where ers_users_fk_auth = ?;";
 
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, reimbursementID);
+            ps.setInt(1, userId);
 
             ResultSet rs = ps.executeQuery();
 
