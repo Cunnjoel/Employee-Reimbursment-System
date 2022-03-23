@@ -26,6 +26,21 @@ public class ReimbursementController {
 
         reimbursementServices.createReimbursement(reimbursement);
 
-        context.json(new JsonResponse(true, "Reimburesment created ", null));
+        context.json(new JsonResponse(true, "Reimbursement created ", null));
+    }
+
+    public void updateStatusApproved(Context context){
+        Integer reimbursementId = Integer.parseInt(context.pathParam("reimbursementId"));
+
+        reimbursementServices.updateStatusApproved(reimbursementId);
+
+        context.json(new JsonResponse(true, "Status updated to Approved", null));
+    }
+
+    public void updateStatusDenied(Context context){
+        Integer reimbursementId = Integer.parseInt(context.pathParam("reimbursementId"));
+
+        reimbursementServices.updateStatusDenied(reimbursementId);
+        context.json(new JsonResponse(true, "Status updated to Denied", null));
     }
 }

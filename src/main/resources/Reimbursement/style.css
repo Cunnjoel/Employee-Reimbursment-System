@@ -1,0 +1,36 @@
+#reimb-container {
+
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+#reimb-form{
+    
+    margin-top: 160px;
+    padding: 15px;
+    background-color: rgb(236, 208, 236);
+    width: 550px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px;
+}
+
+#reimb-form input{
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 2px 2px 4px;
+}
+
+#reimb-form textarea{
+    width: 100%;
+}
+
+#radio{
+    display: flex;
+    justify-content: space-evenly;
+    width: 33%;
+    box-shadow: none;
+}

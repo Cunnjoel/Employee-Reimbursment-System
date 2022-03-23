@@ -1,16 +1,16 @@
 import controllers.*;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 import models.Reimbursement;
+import models.User;
 import repositories.*;
 import services.ReimbursementServices;
-import services.StatusServices;
-import services.TypeServices;
 import services.UserServices;
 
 public class MainDrive {
     public static void main(String[] args) {
-        Javalin app = Javalin.create(javalinConfig -> {
-            javalinConfig.enableCorsForOrigin("");
+        Javalin app = Javalin.create(config -> {
+            config.addStaticFiles("/", Location.CLASSPATH);
         }).start(9000);
 
         UserController userController = new UserController();
@@ -22,10 +22,13 @@ public class MainDrive {
 
         // user endpoints
         app.post("/login", userController::login);
+        app.post("/register", userController::register);
 
         //reimbursement endpoints
         app.get("/reimbursement", reimbursementController::displayReimbursementForUser);
         app.post("/reimbursement", reimbursementController::createReimbursement);
+        app.patch("/approved/{reimbursementId}", reimbursementController::updateStatusApproved);
+        app.patch("/denied/{reimbursementId}", reimbursementController::updateStatusDenied);
 
         //type endpoints
         app.get("/type", typeController::getTypeById);
@@ -36,5 +39,6 @@ public class MainDrive {
 
         //role endpoints
         app.get("/role", roleController::getRoleById);
+
     }
 }

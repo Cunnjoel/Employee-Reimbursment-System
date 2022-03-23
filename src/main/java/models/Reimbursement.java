@@ -18,6 +18,11 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
+    public Reimbursement(Integer id, Integer statusId) {
+        this.id = id;
+        this.statusId = statusId;
+    }
+
     public Reimbursement(Integer id, Double amount, Date submitted, Date resolved, String description, Blob receipt) {
         this.id = id;
         this.amount = amount;

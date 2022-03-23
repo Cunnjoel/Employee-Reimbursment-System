@@ -30,4 +30,14 @@ public class UserController {
         context.json(jsonResponse);
     }
 
+    public void register(Context context){
+        User user = context.bodyAsClass(User.class);
+
+        userServices.createUser(user);
+
+        JsonResponse jsonResponse = new JsonResponse(true, "User has been created", null);
+        context.json(jsonResponse);
+
+    }
+
 }

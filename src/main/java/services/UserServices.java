@@ -2,14 +2,14 @@ package services;
 
 import models.User;
 import repositories.UserDAO;
-import repositories.UserDaoImpl;
+import repositories.UserDAOImpl;
 
 public class UserServices {
     private UserDAO userDAO;
 
     public UserServices(UserDAO userDAO) { this.userDAO = userDAO; }
 
-    public UserServices() { this.userDAO = new UserDaoImpl(); }
+    public UserServices() { this.userDAO = new UserDAOImpl(); }
 
     public User validateCredentials(String username, String password){
         User user = this.userDAO.getUserGivenUserName(username);
@@ -20,4 +20,6 @@ public class UserServices {
             return null;
         return user;
     }
+
+    public void createUser(User user) { this.userDAO.createUser(user); }
 }

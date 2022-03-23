@@ -43,6 +43,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
                     "values (?, ?, ?, ?);";
 
             PreparedStatement ps = conn.prepareStatement(sql);
+
             ps.setDouble(1, reimbursement.getAmount());
             ps.setInt(2, reimbursement.getUserId());
             ps.setInt(3, reimbursement.getStatusId());
@@ -51,6 +52,42 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
             ps.executeUpdate();
 
         }catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateStatusApproved(Integer reimbursementId) {
+        try{
+            Connection conn = ConnectionUtil.getConnection();
+
+            String sql = "update ers_reimbursement set ers_reimbursement_status_fk = 2 where reimb_id = ?;";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, reimbursementId);
+
+            ps.executeUpdate();
+
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateStatusDenied(Integer reimbursementId) {
+        try{
+            Connection conn = ConnectionUtil.getConnection();
+
+            String sql = "update ers_reimbursement set ers_reimbursement_status_fk = 3 where reimb_id = ?;";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, reimbursementId);
+
+            ps.executeUpdate();
+
+        }catch (SQLException sqle){
             sqle.printStackTrace();
         }
     }

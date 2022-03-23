@@ -18,4 +18,8 @@ public class ReimbursementServices {
     }
 
     public void createReimbursement(Reimbursement reimbursement) { this.reimbursementDAO.createReimbursement(reimbursement); }
+
+    public void updateStatusApproved(Integer reimbursementId) { this.reimbursementDAO.updateStatusApproved(reimbursementId); }
+
+    public  void updateStatusDenied(Integer reimbursementId) { this.reimbursementDAO.updateStatusDenied(reimbursementId); }
 }
