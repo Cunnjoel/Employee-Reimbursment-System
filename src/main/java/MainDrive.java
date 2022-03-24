@@ -18,11 +18,17 @@ public class MainDrive {
         TypeController typeController = new TypeController();
         StatusController statusController = new StatusController();
         RoleController roleController = new RoleController();
+        SessionController sessionController = new SessionController();
 
 
         // user endpoints
         app.post("/login", userController::login);
         app.post("/register", userController::register);
+
+        //session endpoints
+        app.post("/session", sessionController::login);
+        app.get("/session", sessionController::checkSession);
+        app.delete("/session", sessionController::logout);
 
         //reimbursement endpoints
         app.get("/reimbursement", reimbursementController::displayReimbursementForUser);

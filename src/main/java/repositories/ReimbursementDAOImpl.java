@@ -39,15 +39,16 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
         try{
             Connection conn = ConnectionUtil.getConnection();
-            String sql = "insert into ers_reimbursement (reimb_amount, ers_users_fk_auth, ers_reimbursement_status_fk, ers_reimbursement_type_fk)\n" +
-                    "values (?, ?, ?, ?);";
+            String sql = "insert into ers_reimbursement (reimb_amount, ers_users_fk_auth, reimb_description, ers_reimbursement_status_fk, ers_reimbursement_type_fk)\n" +
+                    "values (?, ?, ?, ?, ?);";
 
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setDouble(1, reimbursement.getAmount());
             ps.setInt(2, reimbursement.getUserId());
-            ps.setInt(3, reimbursement.getStatusId());
-            ps.setInt(4, reimbursement.getTypeId());
+            ps.setString(3, reimbursement.getDescription());
+            ps.setInt(4,reimbursement.getStatusId());
+            ps.setInt(5, reimbursement.getTypeId());
 
             ps.executeUpdate();
 

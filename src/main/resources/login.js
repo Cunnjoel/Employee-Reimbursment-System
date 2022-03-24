@@ -1,3 +1,12 @@
+window.onload = async function(){
+    let response = await fetch("http://localhost:9000/session");
+    let responseBody = await response.json();
+
+    if(responseBody.success){
+        window.location = "./EmployeeView"
+    }
+}
+
 document.getElementById("login-form").addEventListener("submit", async function(event){
     event.preventDefault();
 
@@ -9,14 +18,13 @@ document.getElementById("login-form").addEventListener("submit", async function(
         password: passwordInputElem.value
     }
 
-    let response = await fetch("http://localhost:9000/login", {
+    let response = await fetch("http://localhost:9000/session", {
         method: "POST",
         body: JSON.stringify(user)
     })
 
     let responseBody = await response.json();
     
-    console.log(responseBody)
     if(responseBody.success == false){
         let messageElem = document.getElementById("message")
         messageElem.innerText = responseBody.message

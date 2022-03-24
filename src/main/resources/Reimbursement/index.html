@@ -12,9 +12,9 @@
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg" style="background-color: rgb(87, 6, 87);">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/" style="color: white;">ERS</a>
+          <a class="navbar-brand" href="/">ERS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -32,24 +32,21 @@
       <div id="reimb-container">
           <form id="reimb-form">
               <h2>Reimbersment</h2>
-              <div><input type="text" id="amout" placeholder="Amount"></div>
+              <div><input type="text" id="amount" placeholder="Amount"></div>
               <div><textarea rows="5" cols="50" id="description" placeholder="Description"></textarea></div>
-              <div id="radio"><input type="radio" name="type" id="lodging">
+              <div id="radio"><input type="radio" name="type" id="lodging" value="1">
               <label for="lodging">Lodging</label>
-              <input type="radio" name="type" id="food">
+              <input type="radio" name="type" id="food" value="2">
               <label for="food">Food</label>
-              <input type="radio" name="type" id="travel">
+              <input type="radio" name="type" id="travel" value="3">
               <label for="travel">Travel</label></div>
-              
-              
-
-
-              <div><button type="button" class="btn btn-primary">Submit</button></div>
+              <div id="message"></div>
+              <div><button class="btn btn-primary">Submit</button></div>
           </form>
       </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
+    <script src="./reimbursement.js"></script>
   </body>
 </html>
