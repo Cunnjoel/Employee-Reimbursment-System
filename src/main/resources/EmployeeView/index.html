@@ -35,37 +35,28 @@
 
   <!-- form -->
   <div class="container" id="view-form">
-    <table class="table table-striped" id="employee-table">
-      <tr>
-        <th>firstname</th>
-        <th>lastname</th>
-        <th>amount</th>
-        <th>description</th>
-        <th>receipt</th>
-        <th>type</th>
-        <th>authorized by</th>
-        <th>date submitted</th>
-        <th>date resolved</th>
-        <th>status</th>
-      </tr>
-      <tr>
-        <th class="firstname"></th>
-        <th class="lastname"></th>
-        <th class="amount"></th>
-        <th class="description"></th>
-        <th class="receipt"></th>
-        <th class="type"></th>
-        <th class="authorized"></th>
-        <th class="submitteddate"></th>
-        <th class="resolveddate"></th>
-        <th class="status"></th>
-      </tr>
+    <table class="table table-striped">
+      <tbody id="employee-table">
+        <tr>
+          <th>firstname</th>
+          <th>lastname</th>
+          <th>amount</th>
+          <th>description</th>
+          <th>receipt</th>
+          <th>type</th>
+          <th>authorized by</th>
+          <th>date submitted</th>
+          <th>date resolved</th>
+          <th>status</th>
+        </tr>
+      </tbody>
     </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
     <script src="./employeeview.js"></script>
+    <script src="../Globals/global.js"></script>
 </body>
 
 </html>

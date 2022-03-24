@@ -3,7 +3,7 @@ let user;
 window.onload = async function () {
 
     //this is used to retrieve query param
-    let response = await fetch("http://localhost:9000/session");
+    let response = await fetch(`${domain}/session`);
 
     let responseBody = await response.json();
 

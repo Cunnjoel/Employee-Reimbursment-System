@@ -24,7 +24,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                reimbursement.add(new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getDate(3),rs.getDate(4), rs.getString(5),rs.getBlob(6)));
+                reimbursement.add(new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getDate(3),rs.getDate(4), rs.getString(5),rs.getBlob(6),rs.getInt(7),rs.getInt(9),rs.getInt(10)));
             }
 
         }catch (SQLException sqle){
