@@ -33,6 +33,7 @@ public class MainDrive {
         //reimbursement endpoints
         app.get("/reimbursement", reimbursementController::displayReimbursementForUser);
         app.post("/reimbursement", reimbursementController::createReimbursement);
+        app.get("/viewall", reimbursementController::displayAllReimbursement);
         app.patch("/approved/{reimbursementId}", reimbursementController::updateStatusApproved);
         app.patch("/denied/{reimbursementId}", reimbursementController::updateStatusDenied);
 

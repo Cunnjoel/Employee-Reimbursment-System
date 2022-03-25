@@ -13,8 +13,7 @@ public class TypeDAOImpl implements TypeDAO{
     public Type getTypebById(Integer typeId) {
         Type type = null;
 
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
 
             String sql = "select * from ers_reimbursement_type ert where reimb_type_id = ?;";
 

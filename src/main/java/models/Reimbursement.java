@@ -14,6 +14,9 @@ public class Reimbursement {
     private Integer userId;
     private Integer statusId;
     private Integer typeId;
+    private String status;
+    private String firstname;
+    private String lastname;
 
     public Reimbursement() {
     }
@@ -50,6 +53,56 @@ public class Reimbursement {
         this.userId = userId;
         this.statusId = statusId;
         this.typeId = typeId;
+    }
+
+    public Reimbursement(Integer id, Double amount, Date submitted, Date resolved, String description, Blob receipt, Integer userId, Integer typeId, String status, String firstname, String lastname) {
+        this.id = id;
+        this.amount = amount;
+        this.submitted = submitted;
+        this.resolved = resolved;
+        this.description = description;
+        this.receipt = receipt;
+        this.userId = userId;
+        this.typeId = typeId;
+        this.status = status;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    public Reimbursement(Integer id, Double amount, Date submitted, Date resolved, String description, Blob receipt, Integer userId, Integer typeId, String status) {
+        this.id = id;
+        this.amount = amount;
+        this.submitted = submitted;
+        this.resolved = resolved;
+        this.description = description;
+        this.receipt = receipt;
+        this.userId = userId;
+        this.typeId = typeId;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Integer getUserId() {
@@ -133,7 +186,12 @@ public class Reimbursement {
                 ", resolved=" + resolved +
                 ", description='" + description + '\'' +
                 ", receipt=" + receipt +
+                ", userId=" + userId +
+                ", statusId=" + statusId +
+                ", typeId=" + typeId +
+                ", status='" + status + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
-
 }

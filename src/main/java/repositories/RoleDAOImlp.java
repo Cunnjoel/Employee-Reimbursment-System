@@ -12,8 +12,7 @@ public class RoleDAOImlp implements RoleDAO{
     @Override
     public Role getRoleById(Integer roleId) {
         Role role = null;
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
 
             String sql = "select * from ers_user_role where ers_user_role_id = ?;";
 
@@ -35,8 +34,8 @@ public class RoleDAOImlp implements RoleDAO{
 
     @Override
     public void changeRole(Integer roleId) {
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
+
             String sql = "update ers_user_role set user_role = 'Manager' where ers_user_role_id = ?;";
 
             PreparedStatement ps = conn.prepareStatement(sql);

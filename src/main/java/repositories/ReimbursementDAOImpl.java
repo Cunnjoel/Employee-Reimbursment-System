@@ -14,9 +14,10 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
     public List<Reimbursement> getAllReimbursementById(Integer userId) {
         List<Reimbursement> reimbursement =new ArrayList<>();
 
-        try {
-            Connection conn = ConnectionUtil.getConnection();
-            String sql = "select * from ers_reimbursement where ers_users_fk_auth = ?;";
+        try (Connection conn = ConnectionUtil.getConnection();){
+
+            String sql = "select * from ers_reimbursement left join ers_reimbursement_status on ers_reimbursement.ers_reimbursement_status_fk = ers_reimbursement_status.reimb_status_id\n" +
+                    "left join ers_users on ers_reimbursement.ers_users_fk_auth = ers_users.ers_users_id where ers_users_fk_auth = ?;";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userId);
@@ -24,8 +25,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                reimbursement.add(new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getDate(3),rs.getDate(4), rs.getString(5),rs.getBlob(6),rs.getInt(7),rs.getInt(9),rs.getInt(10)));
-            }
+                reimbursement.add(new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getDate(3),rs.getDate(4), rs.getString(5),rs.getBlob(6),rs.getInt(7),rs.getInt(9),rs.getString(12),rs.getString(16),rs.getString(17)));            }
 
         }catch (SQLException sqle){
             sqle.printStackTrace();
@@ -35,10 +35,35 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
     }
 
     @Override
+    public List<Reimbursement> getAllReimbursement() {
+        List<Reimbursement> reimbursement =new ArrayList<>();
+
+        try (Connection conn = ConnectionUtil.getConnection();){
+
+            String sql = "select * from ers_reimbursement left join ers_reimbursement_status on ers_reimbursement.ers_reimbursement_status_fk = ers_reimbursement_status.reimb_status_id\n" +
+                    "left join ers_users on ers_reimbursement.ers_users_fk_auth = ers_users.ers_users_id;";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                reimbursement.add(new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getDate(3),rs.getDate(4), rs.getString(5),rs.getBlob(6),rs.getInt(7),rs.getInt(9),rs.getString(12),rs.getString(16),rs.getString(17)));
+            }
+
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
+
+        return reimbursement;
+    }
+
+
+    @Override
     public void createReimbursement(Reimbursement reimbursement) {
 
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
+
             String sql = "insert into ers_reimbursement (reimb_amount, ers_users_fk_auth, reimb_description, ers_reimbursement_status_fk, ers_reimbursement_type_fk)\n" +
                     "values (?, ?, ?, ?, ?);";
 
@@ -59,8 +84,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
     @Override
     public void updateStatusApproved(Integer reimbursementId) {
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
+
 
             String sql = "update ers_reimbursement set ers_reimbursement_status_fk = 2 where reimb_id = ?;";
 
@@ -77,8 +102,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
     @Override
     public void updateStatusDenied(Integer reimbursementId) {
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
+
 
             String sql = "update ers_reimbursement set ers_reimbursement_status_fk = 3 where reimb_id = ?;";
 

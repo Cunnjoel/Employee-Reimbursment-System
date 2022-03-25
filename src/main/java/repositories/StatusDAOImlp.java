@@ -13,8 +13,7 @@ public class StatusDAOImlp implements StatusDAO{
     public Status getStatusById(Integer statusId) {
         Status status = null;
 
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
 
             String sql = "select * from ers_reimbursement_status ers where reimb_status_id  = ?;";
 
@@ -36,8 +35,7 @@ public class StatusDAOImlp implements StatusDAO{
 
     @Override
     public void changeStatus(Integer statusId) {
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
 
             String sql = "update ers_reimbursement_status set reimb_status = 'Approved' where reimb_status_id = ?;";
 

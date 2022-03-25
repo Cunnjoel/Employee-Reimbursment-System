@@ -21,6 +21,11 @@ public class ReimbursementController {
         context.json(new JsonResponse(true, "Listing all Reimbursements for user " + userId, lists));
     }
 
+    public void displayAllReimbursement(Context context){
+        List<Reimbursement> lists = reimbursementServices.getAll();
+        context.json(new JsonResponse(true, "Listing all Reimbursemtns in database", lists));
+    }
+
     public void createReimbursement(Context context){
         Reimbursement reimbursement = context.bodyAsClass(Reimbursement.class);
 

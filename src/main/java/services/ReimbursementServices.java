@@ -17,6 +17,10 @@ public class ReimbursementServices {
         return this.reimbursementDAO.getAllReimbursementById(userId);
     }
 
+    public List<Reimbursement> getAll(){
+        return this.reimbursementDAO.getAllReimbursement();
+    }
+
     public void createReimbursement(Reimbursement reimbursement) { this.reimbursementDAO.createReimbursement(reimbursement); }
 
     public void updateStatusApproved(Integer reimbursementId) { this.reimbursementDAO.updateStatusApproved(reimbursementId); }

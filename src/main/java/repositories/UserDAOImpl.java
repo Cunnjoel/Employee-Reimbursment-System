@@ -10,8 +10,7 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public User getUserGivenUserName(String username) {
         User user = null;
-        try{
-                    Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
 
             String sql ="select * from ers_users where ers_username = ?;";
 
@@ -34,8 +33,7 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void createUser(User user) {
-        try{
-            Connection conn = ConnectionUtil.getConnection();
+        try (Connection conn = ConnectionUtil.getConnection();){
 
             String sql ="insert into ers_users (ers_username, ers_password, user_first_name, user_last_name, user_email, ers_user_role_fk)\n" +
                     "values (?, ?, ?, ?, ?, ?);";

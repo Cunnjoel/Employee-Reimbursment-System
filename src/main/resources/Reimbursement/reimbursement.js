@@ -42,7 +42,7 @@ console.log(user.id)
             let messageElem = document.getElementById("message")
             messageElem.innerText = responseBody.message
         }else{
-            document.getElementById("reimb-form") = "";
+            window.location = `../EmployeeView`
         }
     })
 }

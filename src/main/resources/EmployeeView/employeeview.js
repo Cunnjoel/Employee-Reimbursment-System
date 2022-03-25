@@ -36,8 +36,8 @@ window.onload = async function () {
         let reimbersementTableElm = document.createElement("tr")
 
         reimbersementTableElm.innerHTML = `
-        <th class="firstname">${user.firstname}</th>
-        <th class="lastname">${user.lastname}</th>
+        <th class="firstname">${view.firstname}</th>
+        <th class="lastname">${view.lastname}</th>
         <th class="amount">${view.amount}</th>
         <th class="description">${view.description}</th>
         <th class="receipt"></th>
@@ -45,7 +45,7 @@ window.onload = async function () {
         <th class="authorized">${view.userId}</th>
         <th class="submitteddate">${view.submitted}</th>
         <th class="resolveddate"></th>
-        <th class="status"></th>`
+        <th class="status">${view.status}</th>`
 
         employeeTableElm.appendChild(reimbersementTableElm);
 

@@ -24,11 +24,12 @@ document.getElementById("login-form").addEventListener("submit", async function(
     })
 
     let responseBody = await response.json();
-    
+    console.log(responseBody)
     if(responseBody.success == false){
         let messageElem = document.getElementById("message")
         messageElem.innerText = responseBody.message
-    }else{
-        window.location = `./EmployeeView?userId=${responseBody.data.id}`
-    }
+    }else
+    if(responseBody.data.roleId == 1){
+       window.location = "./ManagerView"
+    }else  window.location = `./EmployeeView?userId=${responseBody.data.id}`
 })
