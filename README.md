@@ -21,7 +21,6 @@ Improve approve and deny buttons for better functionality, only affecting one li
 Fix data dispaly so actual date is shown and not long number
 
 Getting Started
-(include git clone command) (include all environment setup steps)
 In Bash use git clone [https://github.com/Cunnjoel/Employee-Reimbursment-System]
 Create environmental variables to match those in the ConnectionUtil class in the util folder
 Run schema in Dbeaver to create database 
